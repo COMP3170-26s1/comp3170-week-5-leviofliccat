@@ -19,7 +19,7 @@ public class Scene extends SceneObject {
 	}
 	
 	public void createFlower(Vector4f position) {
-		Flower flower = new Flower(20);
+		Flower flower = new Flower(6);
 		flower.setParent(this);	
 		flower.getMatrix().translate(position.x,position.y,0.0f);
 	}

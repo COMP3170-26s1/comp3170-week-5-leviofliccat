@@ -20,6 +20,7 @@ public class Flower extends SceneObject {
 	private final float HEIGHT = 1.0f;
 	private final float WIDTH = 0.1f;
 	private Vector3f colour = new Vector3f(0f, 0.5f, 0f); // Dark Green
+	private Vector3f petalColour = new Vector3f(0.8f, 0f, 0.5f);
 
 	private Vector4f[] vertices;
 	private int vertexBuffer;
@@ -59,6 +60,9 @@ public class Flower extends SceneObject {
 		};
 		    
 		indexBuffer = GLBuffers.createIndexBuffer(indices);
+		
+		FlowerHead flowerHead = new FlowerHead(nPetals, petalColour);
+		flowerHead.setParent(this);
 	}
 	
 	public void drawSelf(Matrix4f mvpMatrix) {
