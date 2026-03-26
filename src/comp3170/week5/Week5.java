@@ -15,6 +15,8 @@ import comp3170.InputManager;
 import java.io.File;
 import java.io.IOException;
 
+import comp3170.week5.sceneobjects.Camera;
+
 
 public class Week5 implements IWindowListener {
 	private Window window;
@@ -27,6 +29,7 @@ public class Week5 implements IWindowListener {
 	private long oldTime;
 	
 	private Scene scene;
+	private Camera camera;
 
 	public Week5()  throws OpenGLException {		
 		
@@ -41,6 +44,7 @@ public class Week5 implements IWindowListener {
 		
 		new ShaderLibrary(DIRECTORY);
 		scene = new Scene();
+		camera = new Camera();
 	}
 	
 	private Vector2i position = new Vector2i();
@@ -71,6 +75,9 @@ public class Week5 implements IWindowListener {
 		glClear(GL_COLOR_BUFFER_BIT);		
 		
 		// TODO: Use the view and projection matricies to construct the mvpMatrix. (TASK 2)
+		camera.getViewMatrix(viewMatrix);
+		camera.getProjectionMatrix(projectionMatrix);
+		projectionMatrix.mul(viewMatrix, mvpMatrix);
 		//			Then send it down the scene graph!
 		scene.draw(mvpMatrix);
 			
@@ -83,6 +90,7 @@ public class Week5 implements IWindowListener {
 		this.height = height;
 		glViewport(0,0,width,height);
 		// TODO: Recalculate the projection matrix when the window is resized. (TASK 2)
+		camera.resize(width, height);
 	}
 
 	@Override

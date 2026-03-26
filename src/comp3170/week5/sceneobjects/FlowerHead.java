@@ -43,17 +43,15 @@ public class FlowerHead extends SceneObject {
 		petalColour = colour;
 		
 		vertices = new Vector4f[nPetals*2 + 1];
-		
-		//make an inner circle?
 		vertices[0] = new Vector4f(0, 0, 0, 1);
 		Matrix4f rotate = new Matrix4f();
 
 		for (int i = 0; i<nPetals*2; i++) {
 			float angle = i * TAU / nPetals/2;
 			rotate.rotationZ(angle); 
-			float r = innerRadius;
-			if (i%2 != 0) {
-				r = outerRadius;
+			float r = outerRadius;
+			if (i%2 == 0) {
+				r = innerRadius;
 			}
 			vertices[i + 1] = new Vector4f(r, 0, 0, 1); 
 			vertices[i + 1].mul(rotate); 
