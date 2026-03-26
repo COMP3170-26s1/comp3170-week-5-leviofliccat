@@ -46,12 +46,15 @@ public class Flower extends SceneObject {
 		
 		//@formatter:off
 		vertices = new Vector4f[] {
-			new Vector4f(-WIDTH / 2,           0, 0, 1),
-			new Vector4f( WIDTH / 2,           0, 0, 1),
+			new Vector4f(-WIDTH / 2,      0, 0, 1),
+			new Vector4f( WIDTH / 2,      0, 0, 1),
 			new Vector4f(-WIDTH / 2, HEIGHT, 0, 1),
 			new Vector4f( WIDTH / 2, HEIGHT, 0, 1),
 		};
 		//@formatter:on
+		
+		
+		
 		vertexBuffer = GLBuffers.createBuffer(vertices);
 		
 	    indices = new int[] {
@@ -63,6 +66,7 @@ public class Flower extends SceneObject {
 		
 		FlowerHead flowerHead = new FlowerHead(nPetals, petalColour);
 		flowerHead.setParent(this);
+		flowerHead.getMatrix().translate(0f, HEIGHT,0f);
 	}
 	
 	public void drawSelf(Matrix4f mvpMatrix) {

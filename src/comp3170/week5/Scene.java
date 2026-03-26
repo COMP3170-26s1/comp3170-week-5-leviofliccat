@@ -3,6 +3,7 @@ package comp3170.week5;
 import org.joml.Vector4f;
 import comp3170.InputManager;
 import comp3170.SceneObject;
+import static comp3170.Math.TAU;
 
 import comp3170.week5.sceneobjects.*;
 
